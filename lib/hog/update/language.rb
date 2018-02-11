@@ -6,8 +6,10 @@ module Hog
       end
 
       def call
-        remove_unchanged input_files[-1], input_files[-2]
-        convert_new_lines
+        return unless input_files.present?
+        load_lines input_files.last
+        remove_lines input_files[-2] if input_files.count > 1
+        convert_lines output_path_for(input_files.last)
       end
 
       private
@@ -16,15 +18,16 @@ module Hog
         []
       end
 
-      def new_lines
-
+      def load_lines path
       end
 
-      def remove_unchanged last, previous
-        return unless previous.present? && last.present?
+      def remove_lines path
       end
 
-      def convert_new_lines
+      def convert_lines output_path
+      end
+
+      def output_path_for path
 
       end
     end
