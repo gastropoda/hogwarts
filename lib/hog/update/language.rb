@@ -1,7 +1,9 @@
 module Hog
   class Update
     class Language
-      attr_reader :language
+      class NotImplemented < StandardError ; end
+
+      attr_reader :language, :lines
 
       def initialize language:
         @language = language
@@ -17,15 +19,22 @@ module Hog
       private
 
       def load_lines path
-        puts "load: #{path}"
+        puts "  load: #{path}"
+        @lines = File.readlines(path)
       end
 
       def remove_lines path
-        puts "remove: #{path}"
+        puts "  remove: #{path}"
+        raise NotImplemented
       end
 
       def convert_lines output_path
-        puts "convert: #{output_path}"
+        puts "  convert: #{output_path}"
+        File.open(output_path, "w") do |out|
+          lines.each do |line|
+            out.puts Convertor.new(line).call
+          end
+        end
       end
 
       def input_files
