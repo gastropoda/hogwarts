@@ -15,14 +15,14 @@ module Hog
         private
 
         def clean_left
-          replace_brackets_with_starts(left)
+          replace_brackets_with_stars(left)
         end
 
         def clean_right
           right.downcase
         end
 
-        def replace_brackets_with_starts line
+        def replace_brackets_with_stars line
           line.gsub(/[\[\]]+/, "*")
         end
       end
