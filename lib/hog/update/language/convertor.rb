@@ -15,7 +15,14 @@ module Hog
         private
 
         def clean_left
-          replace_brackets_with_stars(left)
+          clean_left = replace_brackets_with_stars(left)
+          clean_left = reduce_context(clean_left)
+          clean_left
+        end
+
+        def reduce_context line
+          sentences = line.scan(/[^.!?]+[.!?]/)
+          sentences.find { |s| s[/\*/] }
         end
 
         def clean_right
