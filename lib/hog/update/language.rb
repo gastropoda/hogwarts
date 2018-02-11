@@ -1,6 +1,8 @@
 module Hog
   class Update
     class Language
+      attr_reader :language
+
       def initialize language:
         @language = language
       end
@@ -14,21 +16,32 @@ module Hog
 
       private
 
-      def input_files
-        []
-      end
-
       def load_lines path
+        puts "load: #{path}"
       end
 
       def remove_lines path
+        puts "remove: #{path}"
       end
 
       def convert_lines output_path
+        puts "convert: #{output_path}"
+      end
+
+      def input_files
+        Dir[File.join(input_dir, "*.txt")]
       end
 
       def output_path_for path
+        File.join(output_dir, File.basename(path, ".txt")) + ".csv"
+      end
 
+      def input_dir
+        @input_dir ||= File.join(Hog.config.input_path, language)
+      end
+
+      def output_dir
+        @output_dir ||= File.join(Hog.config.output_path, language)
       end
     end
   end
