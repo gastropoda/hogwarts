@@ -25,7 +25,7 @@ module Hog
 
       def remove_lines path
         puts "  remove: #{path}"
-        raise NotImplemented
+        @lines -= File.readlines(path)
       end
 
       def convert_lines output_path
