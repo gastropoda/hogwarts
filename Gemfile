@@ -10,3 +10,9 @@ gem "thor"
 gem "activesupport", "~> 5.2.0.beta2", require: "active_support/all"
 # terminal interaction
 gem "tty-prompt"
+# testing
+gem "minitest"
+# testing colors
+gem "minitest-color"
+# tasks
+gem "rake"
