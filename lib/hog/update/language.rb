@@ -30,6 +30,7 @@ module Hog
 
       def convert_lines output_path
         puts "  convert: #{output_path}"
+        FileUtils.mkdir_p File.dirname(output_path)
         File.open(output_path, "w") do |out|
           lines.each do |line|
             out.puts Convertor.new(line).call
