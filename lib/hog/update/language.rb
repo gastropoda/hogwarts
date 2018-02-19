@@ -1,8 +1,6 @@
 module Hog
   class Update
     class Language
-      class NotImplemented < StandardError ; end
-
       attr_reader :language, :lines
 
       def initialize language:
