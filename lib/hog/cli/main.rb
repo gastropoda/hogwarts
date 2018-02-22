@@ -17,6 +17,11 @@ module Hog
       def highlights
         Hog::Update.new.highlights
       end
+
+      desc "canon_json", "preprocess books into json"
+      def canon_json
+        Hog::Update.new.canon_json
+      end
     end
   end
 end

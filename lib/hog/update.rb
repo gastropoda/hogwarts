@@ -18,5 +18,12 @@ module Hog
         Hog::Update::Highlights.new(path: path).call
       end
     end
+
+    def canon_json
+      Hog.canon_files.each do |path|
+        puts path
+        Hog::Update::CanonJson.new(path: path).call
+      end
+    end
   end
 end
