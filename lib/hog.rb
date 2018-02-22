@@ -9,11 +9,17 @@ module Hog
     config.language = {
       pl: {
         words: %w[wiezien],
-        name: "polski"
+        name: "polski",
+        chapter_patterns: [
+          /^ROZDZIAŁ/
+        ]
       },
       fr: {
         words: %w[prisonnier],
-        name: "français"
+        name: "français",
+        chapter_patterns: [
+          /^\d+ /
+        ]
       }
     }
   end
